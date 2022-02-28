@@ -18,7 +18,7 @@ public class LoanController {
 //create
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Object> create(@RequestBody Loan loan){
-        loanRepository.save(loan);
+       loanRepository.save(loan);
         return new ResponseEntity<>(loan, HttpStatus.CREATED);
     }
 //findall

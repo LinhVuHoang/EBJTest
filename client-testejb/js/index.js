@@ -8,18 +8,14 @@ document.addEventListener('DOMContentLoaded',function (){
             var data = JSON.parse(xmlHttpRequest.responseText);
             var newcontent ='';
             for(let i =0;i<data.length;i++){
+                let value =data[i].loanamount*data[i].rate*(Math.pow(data[i].loanamount+data[i].rate,data[i].period)/(Math.pow(data[i].loanamount+data[i].rate,data[i].period)-1))*(data[i].loanamount/12);
                 newcontent +=`<tr>
 <td>${data[i].loanamount}</td>
 <td>${data[i].period}</td>
 <td>${data[i].rate}</td>
-<script type="text/javascript">
-var eim =0
- eim= parseInt(loanamount)*parseFloat(rate)*((pow(parseInt(loanamount)+parseFloat(rate),parseInt(period))/((pow(parseInt(loanamount)+parseFloat(rate),parseInt(period))-1))
-        ))*(parseInt(loanamount)/12);
-        document.getElementById('eim').innerHTML= eim;
-        </script>
-<td type="number" id="eim"/>
-</tr>`;
+<td>${value}</td>
+</tr>
+`;
             }
             tableBody.innerHTML = newcontent;
         }
